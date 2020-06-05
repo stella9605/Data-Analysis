@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 
 
 # Data set
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_iris as iris
 from sklearn.datasets import load_breast_cancer as cancer
 ```
 
