@@ -1,4 +1,4 @@
-## Data Mining Class
+## :zap: Data Mining Class
 ### Practice Data Analysis in Python
 
 
