@@ -1,5 +1,5 @@
 ## Data Mining Class
-### Plactice Data Analysis in Python
+### Practice Data Analysis in Python
 
 
 
