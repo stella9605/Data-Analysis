@@ -2,6 +2,9 @@
 ### Plactice Data Analysis in Python
 
 
+
+
+
 -----------------------------------
 ## before start it install in cmd 
 
@@ -9,7 +12,10 @@
 * pip install tensorflow==2.0
 * pip install keras == 2.3.1
 
-+ Frequently basic used modules
+
+
+
+## Frequently basic used modules
 
 ```python
 import numpy as np
