@@ -1,8 +1,8 @@
 # Python
-## :gear: practice in Python how to use machine learning algorithm and deep learning 
+## :gear: Use in Python how to use machine learning algorithm and deep learning 
 
 
-+ KNN
++ [KNN](https://github.com/stella9605/Python/blob/Algorithm/KNN.py)
 
 + Decision Tree
 
