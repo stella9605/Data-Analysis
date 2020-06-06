@@ -12,7 +12,7 @@ df_iris['target']
 df_iris['target_names']
 df_iris['DESCR']
 df_iris['feature_names']
-df_iris['dafilenameta']
+df_iris['filename']
 
 
 # KNN 
