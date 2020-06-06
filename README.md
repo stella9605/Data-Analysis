@@ -1,5 +1,5 @@
 # Python
-## :gear: Use in Python how to use machine learning algorithm and deep learning 
+## :gear: How to use machine learning and deep learning Algorithms use in Python
 
 
 + [KNN](https://github.com/stella9605/Python/blob/Algorithm/KNN.py)
