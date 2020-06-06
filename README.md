@@ -1,5 +1,5 @@
 # Python
-## practice in Python how to use machine learning algorithm and deep learning 
+## :gear: practice in Python how to use machine learning algorithm and deep learning 
 
 
 + KNN
