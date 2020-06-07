@@ -41,7 +41,7 @@ from sklearn.datasets import load_breast_cancer as cancer
 
 + [Random Forest](https://github.com/stella9605/Python/blob/master/Random_Forest.py)
 
-+ Gradiant Boostion Tree (XGB) 
++ [Gradiant Boostion Tree (XGB)](https://github.com/stella9605/Python/blob/master/Gradiant%20Boosting%20Tree.py) 
 
 + interaction
 
