@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## :zap: Data Mining Class
 ### Practice Data Analysis in Python
 
@@ -31,4 +32,26 @@ from sklearn.datasets import load_breast_cancer as cancer
 ```
 
 
+=======
+# Python
+## :gear: How to use machine learning and deep learning Algorithms use in Python
+>>>>>>> Algorithm
 
+
++ [KNN](https://github.com/stella9605/Python/blob/Algorithm/KNN.py)
+
++ Decision Tree
+
++ Random Forest
+
++ Gradiant Boostion Tree (XGB) 
+
++ interaction
+
++ minmax scaling 
+
++ SVM
+
++ PAC + KNN 
+
++ CV
