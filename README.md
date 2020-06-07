@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## :zap: Data Mining Class
 ### Practice Data Analysis in Python
 
@@ -39,7 +38,7 @@ from sklearn.datasets import load_breast_cancer as cancer
 
 + [Decision Tree](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree.py)
 
-+ Random Forest
++ [Random Forest](https://github.com/stella9605/Python/blob/master/Random_Forest.py)
 
 + Gradiant Boostion Tree (XGB) 
 
