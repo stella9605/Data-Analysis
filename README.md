@@ -37,6 +37,7 @@ from sklearn.datasets import load_breast_cancer as cancer
 + [KNN](https://github.com/stella9605/Python/blob/Algorithm/KNN.py)
 
 + [Decision Tree](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree.py)
+* [summary](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree%20Result)
 
 + [Random Forest](https://github.com/stella9605/Python/blob/master/Random_Forest.py)
 
