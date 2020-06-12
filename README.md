@@ -54,3 +54,5 @@ from sklearn.datasets import load_breast_cancer as cancer
 + CV
 
 
+--------------------------------
++ [predict1](https://github.com/stella9605/Python/blob/master/iris_varity_prediction.py)
