@@ -29,7 +29,7 @@ x_train_scaler.transform(x_train)
 # 그 후, transform 메서드를 학습용 데이터와 테스트 데이터에 적용한다.(train data & test data)
 # scaler는 fit_transform() 라는 단축메서드를 제공하고
 # 학습용 데이터에는 fit_transform() 메서드를 적용하고,
-# 테스트 데이터에는 fit_transform() 메서드를 적용한다
+# 테스트 데이터에는 transform() 메서드를 적용한다
 
 print('스케일 조정 전  features Min value : \n{}', format(x_train.min(axis=0)))
 print('스케일 조정 전  features Max value : \n{}', format(x_train.max(axis=0)))
