@@ -236,8 +236,6 @@ model.save = model('model_spo2.h5')
 
 test1 = x_test[0:1]
 model.predict(test1)
-
-
 ```
 
 + 과적합과 evaluate, predict에 대한 개념 더 알아보기, 차이가 왜 나는가 ?? 
