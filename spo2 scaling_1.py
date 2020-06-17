@@ -38,34 +38,104 @@ train.update(train_dst) # 보간한 데이터를 기존 데이터프레임에 �
 test.update(test_dst)
 
 
-X = train.iloc[:, :-4]
+X = train
 Y = train.iloc[:,-4:]
 
-# 방법 1.) SPO2 (산소포화도) 새컬럼으로 만듦
-# spo2 = Y_1/(Y_1+Y_2)
-
-spo2 = Y['hbo2'] / Y['hhb'] + Y['hbo2'] 
-
-d_spo2 = DataFrame(spo2)
-d_spo2.columns =['spo2']
-
-
-
-
+Y_hhb = Y.iloc[:,0]
+Y_hbo2 = Y.iloc[:,1]
+Y_ca = Y.iloc[:,2]
+Y_na = Y.iloc[:,3]
 
 # inf 제거 
 # spo2 = spo2[~spo2.isin([np.nan, np.inf, -np.inf]).any(1)]
 # -- 제거하니 행의 개수가 안맞음
 
-# inf 0 으로 치환
+# inf -1 으로 치환
 d_spo2 = d_spo2.replace([np.inf, -np.inf], np.nan).fillna(-1)   # data frame 형식
 spo2 = spo2.replace([np.inf, -np.inf], np.nan).fillna(-1)       # series 형식 
 
 
 # 데이터셋 분리
 x_train, x_test, y_train, y_test = train_test_split(X,
-                                                    spo2,
+                                                    Y,
                                                     random_state=99)
+
+X.iloc[:,-4]
+X.iloc[:,-3]
+
+# 튜닝함수 -spo2
+def tuning_spo2(s):
+    # 계산식(산소포화도)
+    s_hhb = s.iloc[:,-4]    # hhb
+    s_hbo2 = s.iloc[:,-3]    # hbo2
+     
+    # # index 표준화
+    # set_index = s.index
+    # s_hhb.index = set_index
+    # s_hbo2.index= set_index
+    
+    spo2 = s_hbo2 / (s_hbo2 + s_hhb)
+    spo2 = spo2.replace([np.inf, -np.inf], np.nan).fillna(-1) 
+    return(spo2)
+    s_hbo2.index = set_index
+     
+    spo2_t = s_hbo2 / (s_hhb + s_hbo2)
+    spo2_t = spo2_t.replace([np.inf, -np.inf], np.nan).fillna(0)
+    spo2_t.index = set_index
+    return (spo2_t)
+
+tuning_spo2 = tuning_spo2(X)
+
+tuning_spo2 = DataFrame(tuning_spo2)
+
+tuning_spo2.index = X.index
+
+tuning_x_train = x_train.apply(tuning_spo2, axis=1)
+tuning_y_test = y_test.apply(tuning_spo2, axis=1)
+
+
+Y_hhb
+Y_hbo2
+
+Y_hbo2 / Y_hhb + Y_hbo2
+
+X[1:36].columns.str.split('_').str[0]
+X
+Y
+
+def tuning_var(s):
+    s_rho = s[0]          # _rho
+    s_src = s[1:36]       # _src
+    s_dst = s[36:]        # _dst    
+
+    # index 표준화
+    set_index = s_src.index.str.split('_').str[0]
+    s_src.index = set_index
+    s_dst.index = set_index
+
+    # 계산식 (흡광도 계산식)
+    # A(흡광도) = -log10(I(투과방사선)/I0(입사방사선))  
+    #           = ε(흡광계수) ⋅ b(투과 경로 길이(cm)) ⋅ c(농도)
+    s_ds_st = ((s_dst / s_src) / (s_rho/10))
+    
+    # 계산 완료후 inf,nan 0으로 치환
+    s_ds_st = [i if i != np.inf else 0.0 for i in s_ds_st ]
+    s_ds_st = Series(s_ds_st).fillna(value = 0)
+    
+    # math.log 계산을 위해 0을 1로 치환후 계산(흡광계수는 1로 가정한다.)
+    s_ds_st = [1 if i == 0 else i for i in s_ds_st ]
+    
+    # 변수 튜닝 반환
+    out_s = Series(map(lambda x : -math.log(x,10), s_ds_st))
+    out_s.index= set_index
+    return(out_s)
+
+tuning_x_train = x_train.apply(tuning_var, axis=1)
+tuning_x_test = x_test.apply(tuning_var)
+
+
+
+
 # 스케일링 
 from sklearn.preprocessing import RobustScaler
 scaler = RobustScaler()
@@ -98,49 +168,10 @@ model.predict(xhat)  # 5.96
 # Robuster predict 1.60
 
 
-from keras.models import load_model
-spo2_model = model.save('spo2_model_1.h5')
-test1=pd.read_csv('sample_submission.csv',index_col='id')
-test1=test1.astype('float')
-test1_model = spo2_model.predict(xhat)
-test1_model.to_csv = ('testspo2.csv')
-
-
-test1.to_csv("test1.csv")
-
-
-
-
-
-
-
-
-# 방법 2.) 튜닝함수 -spo2
-def tunning_spo2(x):
-    # 계산식(산소포화도)
-    spo2_t = Y['hbo2'] / Y['hhb'] + Y['hbo2'] 
-    spo2_t = spo2_t.replace([np.inf, -np.inf], np.nan).fillna(-1)
-
-    return (spo2_t)
 
 tunning_x_train =  x_train.apply(tunning_spo2, axis=1)
 tunning_x_train.index
 
-train
-
-#########################################################################
-
-# spo2 = Y_1/(Y_1+Y_2)
-
-spo2 = Y['hbo2'] / Y['hhb'] + Y['hbo2'] 
-
-d_spo2 = DataFrame(spo2)
-d_spo2.columns =['spo2']
-
-
-# inf -1 으로 치환(기본값)
-d_spo2 = d_spo2.replace([np.inf, -np.inf], np.nan).fillna(0)   # data frame 형식
-spo2 = spo2.replace([np.inf, -np.inf], np.nan).fillna(0)       # series 형식 
 
 
 # 산소포화도에 흡광도 학습
