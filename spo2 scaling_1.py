@@ -229,12 +229,17 @@ model = Sequential()
 model.add(Dense(35, input_dim = x_train.shape[1], activation = 'relu'))
 model.add(Dense(10))
 model.add(Dense(1))
-
+ 
 
 # 모델 학습 과정 설정
 model.compile(loss='mean_absolute_error',
               optimizer='adam',
               metrics=['mae'])
+
+import tensorflow as tf
+model.compile(optimizer=tf.keras.optimizers.RMSprop(0.01),
+              lostt=tf.keras.losses.CategoricalCrossentropy(),
+              metrics=[tf.keras.metrics.CategoricalCrossentropy])
 
 # 모델 학습 시키기
 hist = model.fit(x_train, y_train, epochs = 1000, batch_size = 300)

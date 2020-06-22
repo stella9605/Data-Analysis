@@ -340,6 +340,7 @@ def model_x(x_scaled_hhb, y_train_hhb, number):
 model_hhb = model_x(x_scaled_hhb,y_train_hhb,500)
 model_hhb.evaluate(x_scaled_hhb,y_train_hhb)[1]
 
+# 0.75
 
 
 hhb.dtype('float64')
