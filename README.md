@@ -34,7 +34,7 @@ from sklearn.datasets import load_breast_cancer as cancer
 ## :gear: How to use machine learning and deep learning Algorithms use in Python
 
 
-+ [KNN](https://github.com/stella9605/Python/blob/Algorithm/KNN.py)
++ [KNN](https://github.com/stella9605/Data-Analysis/blob/master/practice/KNN.py)
 
 + [Decision Tree](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree.py)
 * [DT_summary](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree%20Result)
