@@ -36,12 +36,13 @@ from sklearn.datasets import load_breast_cancer as cancer
 
 + [KNN](https://github.com/stella9605/Data-Analysis/blob/master/practice/KNN.py)
 
-+ [Decision Tree](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree.py)
++ [Decision Tree](https://github.com/stella9605/Data-Analysis/blob/master/practice/Decision%20Tree.py)
++ 
 * [DT_summary](https://github.com/stella9605/Python/blob/Algorithm/Decision%20Tree%20Result)
 
-+ [Random Forest](https://github.com/stella9605/Python/blob/master/Random_Forest.py)
++ [Random Forest](https://github.com/stella9605/Data-Analysis/blob/master/practice/Random_Forest.py)
 
-+ [Gradiant Boostion Tree (XGB)](https://github.com/stella9605/Python/blob/master/Gradiant%20Boosting%20Tree.py) 
++ [Gradiant Boostion Tree (XGB)](https://github.com/stella9605/Data-Analysis/blob/master/practice/Gradiant%20Boosting%20Tree.py) 
 
 + interaction
 
